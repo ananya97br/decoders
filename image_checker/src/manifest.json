@@ -1,16 +1,20 @@
 {
   "manifest_version": 3,
   "name": "Image Location Detector",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Warns when images contain GPS data",
   "permissions": ["activeTab"],
   "action": {
     "default_popup": "popup.html"
   },
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["exif.js", "content.js"]
+      "js": ["exif.js", "content.js"],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
@@ -20,3 +24,5 @@
     }
   ]
 }
+
+
