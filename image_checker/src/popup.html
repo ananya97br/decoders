@@ -1,61 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'self'">
-  <title>Image Checker</title>
+  <title>GPS Metadata Checker</title>
   <style>
-    body {
-      width: 350px;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-    h2 {
-      margin: 0 0 15px 0;
-      font-size: 16px;
-    }
+    body { width: 400px; font-family: Arial, sans-serif; margin: 0; padding: 0; }
     #dropArea {
-      border: 2px dashed #ccc;
-      border-radius: 8px;
-      padding: 30px;
-      text-align: center;
-      cursor: pointer;
-      background: #f9f9f9;
+      border: 2px dashed #99a; border-radius: 10px; text-align: center;
+      padding: 30px 10px; margin: 22px 16px 10px; background: #f7faff;
     }
-    #dropArea:hover {
-      border-color: #007bff;
-      background: #f0f8ff;
-    }
-    #result {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 6px;
-      display: none;
-    }
-    .warning {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffc107;
-    }
-    .safe {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #28a745;
-    }
-    input[type="file"] {
-      display: none;
-    }
+    #result { padding: 8px 20px 20px; }
+    button.remove { margin-top: 14px; background: #d43; color: #fff; border: none; padding: 11px 22px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .warning { color: #c00; }
+    .safe { color: #080; }
   </style>
 </head>
 <body>
-  <h2> Image Location Checker</h2>
-  <div id="dropArea">
-    Drop image here or click to select
-  </div>
-  <input type="file" id="fileInput" accept="image/*">
+  <div id="dropArea">Drop image or Word file (.docx) here<br><small>or click to select</small></div>
+  <input type="file" id="fileInput" style="display:none;" accept=".jpg,.jpeg,.png,.docx,image/*,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
   <div id="result"></div>
-
   <script src="exif.js"></script>
+  <script src="jszip.min.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
+
