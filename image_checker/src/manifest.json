@@ -1,16 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "AutoPopup Metadata GPS Checker",
+  "name": "Metadata Cleaner & Uploader",
   "version": "1.0",
-  "description": "Auto-opens popup to check and strip GPS/exif geolocation from images or Word (.docx) files.",
-  "permissions": ["storage"],
+  "description": "Cleans metadata from images and Word docs, then directly uploads to websites",
+  "permissions": ["activeTab", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "Metadata GPS Checker"
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
@@ -21,10 +20,12 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["popup.html", "popup.js", "exif.js", "jszip.min.js"],
+      "resources": ["exif.js", "jszip.min.js"],
       "matches": ["<all_urls>"]
     }
   ]
 }
+
+
 
 

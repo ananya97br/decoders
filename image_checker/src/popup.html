@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GPS Metadata Checker</title>
+  <meta charset="UTF-8" />
+  <title>Metadata Cleaner & Uploader</title>
   <style>
-    body { width: 400px; font-family: Arial, sans-serif; margin: 0; padding: 0; }
     #dropArea {
-      border: 2px dashed #99a; border-radius: 10px; text-align: center;
-      padding: 30px 10px; margin: 22px 16px 10px; background: #f7faff;
+      border: 2px dashed #999;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      margin-top: 10px;
+      user-select: none;
+      color: #444;
     }
-    #result { padding: 8px 20px 20px; }
-    button.remove { margin-top: 14px; background: #d43; color: #fff; border: none; padding: 11px 22px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-    .warning { color: #c00; }
-    .safe { color: #080; }
+    #result {
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
   </style>
 </head>
 <body>
-  <div id="dropArea">Drop image or Word file (.docx) here<br><small>or click to select</small></div>
-  <input type="file" id="fileInput" style="display:none;" accept=".jpg,.jpeg,.png,.docx,image/*,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+  <div id="dropArea">Drag & Drop files here or click to select</div>
+  <input type="file" id="fileInput" style="display:none" />
   <div id="result"></div>
-  <script src="exif.js"></script>
-  <script src="jszip.min.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
-
