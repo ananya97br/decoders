@@ -31,15 +31,13 @@ function handleFile(file) {
   const fileType = file.type;
   if (fileType.startsWith("image/")) {
     handleImage(file);
-  } else if (file.name.toLowerCase().endsWith(".docx")) {
-    handleDocx(file);
   } else if (
     fileType === "application/pdf" ||
     file.name.toLowerCase().endsWith(".pdf")
   ) {
     handlePDF(file);
   } else {
-    resultDiv.textContent = "Unsupported file type. Only images, PDFs and DOCX allowed.";
+    resultDiv.textContent = "Unsupported file type. Only images allowed.";
   }
 }
 
@@ -65,19 +63,7 @@ async function handleImage(file) {
   reader.readAsDataURL(file);
 }
 
-// Remove metadata from DOCX using JSZip (removes core.xml and custom.xml)
-async function handleDocx(file) {
-  const arrayBuffer = await file.arrayBuffer();
-  const zip = await JSZip.loadAsync(arrayBuffer);
-  zip.remove("docProps/core.xml");
-  zip.remove("docProps/custom.xml");
-  const cleanedBlob = await zip.generateAsync({ type: "blob" });
-  resultDiv.textContent = "✅ All metadata removed. Uploading clean DOCX...";
-  sendCleanFileToContentScript(cleanedBlob, file.name, file.type);
-}
-
 function handlePDF(file) {
-  // PDF metadata removal is complex; notify user no upload for now
   resultDiv.textContent = "PDF upload with metadata stripping not supported currently.";
 }
 
